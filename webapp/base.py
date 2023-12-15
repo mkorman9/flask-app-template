@@ -4,11 +4,8 @@ import sys
 import traceback
 
 from flask import Flask
-from psycopg_pool import PoolTimeout
 from pydantic import ValidationError
 from werkzeug.exceptions import HTTPException
-
-from webapp.db import pool
 
 
 def __on_startup():
