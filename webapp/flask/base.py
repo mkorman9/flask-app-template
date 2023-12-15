@@ -1,4 +1,3 @@
-import atexit
 import os
 import sys
 import traceback
@@ -8,19 +7,8 @@ from pydantic import ValidationError
 from werkzeug.exceptions import HTTPException
 
 
-def __on_startup():
-    print(f'✅ Worker #{os.getpid()} is ready')
-
-
-def __on_shutdown():
-    pass
-
-
 def create_base_app() -> Flask:
     app = Flask(__name__)
-
-    __on_startup()
-    atexit.register(__on_shutdown)
 
     @app.errorhandler(ValidationError)
     def validation_error(e: ValidationError):
