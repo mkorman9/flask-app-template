@@ -9,6 +9,12 @@ if [[ -z "$PROJECT_NAME" ]]; then
 fi
 
 git clone git@github.com:mkorman9/flask-app-template.git "${PROJECT_NAME}" && \
-    rm -rf "${PROJECT_NAME}/.git" "${PROJECT_NAME}/README.md" && \
-    cp "${PROJECT_NAME}/.env.template" "${PROJECT_NAME}/.env"
+    cd "${PROJECT_NAME}"
+    rm -rf .git README.md && \
+    cp .env.template .env && \
+    make config && \
+    .venv/bin/pip freeze | grep -F -f requirements.txt > requirements.txt.frozen && \
+    mv requirements.txt.frozen requirements.txt && \
+    .venv/bin/pip freeze | grep -F -f requirements-dev.txt > requirements-dev.txt.frozen && \
+    mv requirements-dev.txt.frozen requirements-dev.txt
 ```
