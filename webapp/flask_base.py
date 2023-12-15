@@ -1,5 +1,3 @@
-import os
-import sys
 import traceback
 
 from flask import Flask
@@ -15,7 +13,7 @@ def create_base_app() -> Flask:
         return {
             'title': 'Provided request body contains schema violations',
             'type': 'ValidationError',
-            'cause': [{'field': '.'.join(e['loc']), 'code': e['type'], 'message': e['msg']} for e in e.errors()]
+            'cause': [{'location': e['loc'], 'code': e['type'], 'message': e['msg']} for e in e.errors()]
         }, 400
 
     @app.errorhandler(Exception)
