@@ -1,7 +1,7 @@
 import atexit
 import os
 
-from webapp.flask.base import create_base_app
+from webapp.flask_base import create_base_app
 
 app = create_base_app()
 
