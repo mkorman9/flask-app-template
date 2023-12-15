@@ -7,11 +7,11 @@ app = create_base_app()
 
 
 def on_startup():
-    print(f'✅ Worker #{os.getpid()} is ready')
+    print(f'✅ Worker is ready (PID={os.getpid()})')
 
 
 def on_shutdown():
-    print(f'⛔ Worker #{os.getpid()} is shutting down')
+    print(f'⛔ Worker is shutting down (PID={os.getpid()})')
 
 
 # register app endpoints
