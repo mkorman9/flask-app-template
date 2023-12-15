@@ -13,5 +13,5 @@ try:
     load_dotenv()
     config = ConfigModel(**os.environ)
 except ValidationError as e:
-    print('Failed to load configuration:', e)
+    print('🚫 Failed to load configuration:', e)
     sys.exit(4)
