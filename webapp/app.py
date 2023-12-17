@@ -1,9 +1,9 @@
 import atexit
 import os
 
-from webapp.flask_base import create_base_app
+from webapp.base import create_app_base
 
-app = create_base_app()
+app = create_app_base(__name__)
 
 
 def on_startup():
