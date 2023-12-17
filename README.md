@@ -13,8 +13,10 @@ git clone git@github.com:mkorman9/flask-app-template.git "${PROJECT_NAME}" && \
     rm -rf .git README.md && \
     cp .env.template .env && \
     make config && \
-    .venv/bin/pip freeze | grep -F -f requirements.txt > requirements.txt.frozen && \
+    .venv/bin/pip freeze > pip-freeze.tmp && \
+    sed 's/$/==/' requirements.txt | grep -F -f - pip-freeze.tmp > requirements.txt.frozen && \
     mv requirements.txt.frozen requirements.txt && \
-    .venv/bin/pip freeze | grep -F -f requirements-dev.txt > requirements-dev.txt.frozen && \
-    mv requirements-dev.txt.frozen requirements-dev.txt
+    sed 's/$/==/' requirements-dev.txt | grep -F -f - pip-freeze.tmp > requirements-dev.txt.frozen && \
+    mv requirements-dev.txt.frozen requirements-dev.txt && \
+    rm -f pip-freeze.tmp
 ```
