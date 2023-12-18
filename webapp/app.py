@@ -1,11 +1,11 @@
 import atexit
 import os
 
-from gevent import get_hub
+import gevent
 
 from webapp.base import create_app_base
 
-get_hub().exception_stream = None
+gevent.get_hub().exception_stream = None
 
 app = create_app_base(__name__)
 
