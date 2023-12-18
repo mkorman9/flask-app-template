@@ -4,6 +4,7 @@ import os
 import gevent
 
 from webapp.base import create_app_base
+from webapp.logger import log
 
 gevent.get_hub().exception_stream = None
 
@@ -14,11 +15,11 @@ app = create_app_base(__name__)
 
 
 def on_startup():
-    print(f'✅ Worker is ready (PID={os.getpid()})')
+    log.info('✅ Worker is ready (PID=%d)', os.getpid())
 
 
 def on_shutdown():
-    print(f'⛔ Worker is shutting down (PID={os.getpid()})')
+    log.info('⛔ Worker is shutting down (PID=%d)', os.getpid())
 
 
 on_startup()

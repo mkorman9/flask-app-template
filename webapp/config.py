@@ -6,7 +6,7 @@ from pydantic import ValidationError, BaseModel
 
 
 class ConfigModel(BaseModel):
-    pass
+    LOG_LEVEL: str = 'INFO'
 
 
 try:
