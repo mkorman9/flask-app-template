@@ -6,15 +6,15 @@ from webapp.base import create_app_base
 app = create_app_base(__name__)
 
 
+# register app endpoints
+
+
 def on_startup():
     print(f'✅ Worker is ready (PID={os.getpid()})')
 
 
 def on_shutdown():
     print(f'⛔ Worker is shutting down (PID={os.getpid()})')
-
-
-# register app endpoints
 
 
 on_startup()
