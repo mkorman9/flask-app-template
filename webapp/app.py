@@ -1,6 +1,11 @@
-from webapp.base import create_app_base
+from webapp.flask_base_app import create_flask_base_app
+from webapp.config import get_config
+from webapp.logger import configure_logger
 
-app = create_app_base(__name__)
+configure_logger()
+_ = get_config()
+
+app = create_flask_base_app(__name__)
 
 
 # register app endpoints
