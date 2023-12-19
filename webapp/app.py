@@ -2,9 +2,8 @@ import atexit
 import logging
 import os
 
-from webapp.base import configure_logger, create_app_base
+from webapp.base import create_app_base
 
-configure_logger()
 app = create_app_base(__name__)
 
 
