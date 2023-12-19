@@ -1,13 +1,11 @@
 import atexit
+import logging
 import os
 
-import gevent
-
+from webapp import logger
 from webapp.base import create_app_base
-from webapp.logger import log
 
-gevent.get_hub().exception_stream = None
-
+logger.configure()
 app = create_app_base(__name__)
 
 
@@ -15,11 +13,11 @@ app = create_app_base(__name__)
 
 
 def on_startup():
-    log.info('✅ Worker is ready (PID=%d)', os.getpid())
+    logging.info('✅ Worker is ready (PID=%d)', os.getpid())
 
 
 def on_shutdown():
-    log.info('⛔ Worker is shutting down (PID=%d)', os.getpid())
+    logging.info('⛔ Worker is shutting down (PID=%d)', os.getpid())
 
 
 on_startup()
