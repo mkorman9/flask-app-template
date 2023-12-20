@@ -1,9 +1,9 @@
 from webapp.flask_base_app import create_flask_base_app
-from webapp.config import get_config
+from webapp.config import load_config
 from webapp.logger import configure_logger
 
 configure_logger()
-_ = get_config()
+load_config()
 
 app = create_flask_base_app(__name__)
 
